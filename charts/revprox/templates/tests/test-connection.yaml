@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "revprox.fullname" . }}-test-connection"
+  labels:
+    {{- include "revprox.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "revprox.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
