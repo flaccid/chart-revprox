@@ -33,6 +33,8 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["/revprox"]
+          args: ["-addr=:8080", "-target=https://google.com/", "-host=google.com"]
           ports:
             - name: http
               containerPort: 8080
