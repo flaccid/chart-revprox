@@ -33,8 +33,8 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["/revprox"]
-          args: ["-addr=:8080", "-target=https://icanhazip.com/", "-host=icanhazip.com"]
+          command: {{ .Values.revprox.command }}
+          args: {{ .Values.revprox.args }}
           ports:
             - name: http
               containerPort: 8080

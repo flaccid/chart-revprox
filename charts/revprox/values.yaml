@@ -35,6 +35,10 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+revprox:
+  command: ["/revprox"]
+  args: ["-addr=:8080", "-target=https://icanhazip.com/", "-host=icanhazip.com"]
+
 service:
   type: ClusterIP
   port: 8080
