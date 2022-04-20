@@ -34,7 +34,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: {{ .Values.revprox.command }}
-          args: {{ .Values.revprox.args }}
+          args:
+          {{- range .Values.revprox.args }}
+          - {{.}}
+          {{- end }}
           ports:
             - name: http
               containerPort: 8080
