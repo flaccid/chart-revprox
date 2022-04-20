@@ -34,7 +34,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/revprox"]
-          args: ["-addr=:8080", "-target=https://google.com/", "-host=google.com"]
+          args: ["-addr=:8080", "-target=https://icanhazip.com/", "-host=icanhazip.com"]
           ports:
             - name: http
               containerPort: 8080
